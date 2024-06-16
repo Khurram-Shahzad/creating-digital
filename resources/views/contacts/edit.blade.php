@@ -17,12 +17,7 @@
                 <x-input label="Email" name="email" value="{{ $contact->email }}"></x-input>
                 <x-input label="Phone" name="phone" value="{{ $contact->phone }}"></x-input>
 
-                <button
-                    type="submit"
-                    class="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
-                >
-                    Update Contact
-                </button>
+                <x-submit-btn text="Update Contact"></x-submit-btn>
             </form>
 
         </div>
