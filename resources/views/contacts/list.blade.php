@@ -20,7 +20,7 @@
                     <tr>
                         <td class="whitespace-nowrap px-4 py-5 font-medium text-gray-900">
                             @include('contacts.partials.delete-contact')
-                            <x-link route="{{ route('contacts.edit', ['contact' => $contact->id]) }}" label="(Edit)"></x-link>
+                            <x-link route="{{ route('contacts.edit', ['contact' => $contact->id]) }}" label="Edit"></x-link>
                         </td>
                         <x-table.data value="{{ $contact->first_name }}"></x-table.data>
                         <x-table.data value="{{ $contact->last_name }}"></x-table.data>
