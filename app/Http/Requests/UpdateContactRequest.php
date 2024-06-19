@@ -25,8 +25,8 @@ class UpdateContactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'firstName' => ['required'],
-            'lastName' => ['required'],
+            'firstName' => ['required', 'alpha'],
+            'lastName' => ['required', 'alpha'],
             'email' => ['required', 'email', Rule::unique('contacts')->ignore(Route::input('contact'))],
             'phone' => ['required', new NumberPlusMinusParenSpaceRule()],
         ];
