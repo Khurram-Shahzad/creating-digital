@@ -4,33 +4,30 @@
         <div class="mt-24 w-5/6 mx-auto rounded-lg border border-gray-200 p-10">
             <x-alerts.success></x-alerts.success>
             <h2 class="text-2xl mb-8">Contacts List</h2>
-            <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-left">
-                <thead>
-                    <tr>
-                        <x-table.header header="Actions"></x-table.header>
-                        <x-table.header header="First Name"></x-table.header>
-                        <x-table.header header="Last Name"></x-table.header>
-                        <x-table.header header="Phone"></x-table.header>
-                        <x-table.header header="Email"></x-table.header>
-                    </tr>
-                </thead>
 
-                <tbody class="divide-y divide-gray-200">
-                    @foreach($contacts as $contact)
-                        <tr>
-                            <td class="whitespace-nowrap px-4 py-5 font-medium text-gray-900">
-                                @include('contacts.partials.delete-contact')
-                                <x-link route="{{ route('contacts.edit', ['contact' => $contact->id]) }}" label="Edit"></x-link>
-                            </td>
-                            <x-table.data value="{{ $contact->first_name }}"></x-table.data>
-                            <x-table.data value="{{ $contact->last_name }}"></x-table.data>
-                            <x-table.data value="{{ $contact->phone }}"></x-table.data>
-                            <x-table.data value="{{ $contact->email }}"></x-table.data>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="container mx-auto">
+                <div class="grid grid-cols-5 gap-4 bg-gray-300 p-5 border">
+                    <div>Actions</div>
+                    <div>First Name</div>
+                    <div>Last Name</div>
+                    <div>Phone</div>
+                    <div>Email</div>
+                </div>
 
+                @foreach($contacts as $contact)
+                    <div class="grid grid-cols-5 gap-4 my-3 p-5">
+                        <div class="whitespace-nowrap font-medium text-gray-900">
+                            @include('contacts.partials.delete-contact')
+                            <x-link route="{{ route('contacts.edit', ['contact' => $contact->id]) }}" label="Edit"></x-link>
+                        </div>
+                        <div class="truncate"> {{ $contact->first_name }}</div>
+                        <div class="truncate"> {{ $contact->last_name }}</div>
+                        <div class="truncate"> {{ $contact->phone }}</div>
+                        <div class="truncate"> {{ $contact->email }}</div>
+
+                    </div>
+                @endforeach
+            </div>
         </div>
         <div class="text-center mt-5">
             <x-link-btn label="Add New" route="{{ route('contacts.create') }}"></x-link-btn>
